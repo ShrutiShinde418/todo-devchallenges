@@ -5,7 +5,7 @@ const TabButton = (props) => {
   const classNames = [props.class, "py-3"].join(" ");
   return (
     <li className={classNames}>
-      <button>{props.content}</button>
+      <button onClick={props.onClick}>{props.content}</button>
     </li>
   );
 };
