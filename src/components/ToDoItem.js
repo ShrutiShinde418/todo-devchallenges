@@ -1,8 +1,8 @@
 import React from "react";
 
-const ToDoItem = (props) => {
+const ToDoItem = ({ task, isDone, completeHandler }) => {
   const taskDoneHandler = (e) => {
-    props.completeHandler(e.target.checked, props.task);
+    completeHandler(e.target.checked, task);
   };
   return (
     <li className="flex items-center gap-2">
@@ -11,17 +11,17 @@ const ToDoItem = (props) => {
         name="task"
         id="task"
         className="w-5 h-5 accent-blue"
-        checked={props.isDone}
+        checked={isDone}
         onChange={taskDoneHandler}
       />
       <p
         className={
-          props.isDone
+          isDone
             ? "text-black font-medium line-through"
             : "text-black font-medium"
         }
       >
-        {props.task}
+        {task}
       </p>
     </li>
   );
