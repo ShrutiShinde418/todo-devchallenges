@@ -6,7 +6,7 @@ const AllTab = ({ tasksList, getTaskHandler, taskCompleteHandler }) => {
   return (
     <React.Fragment>
       <Form getTask={getTaskHandler} />
-      <ul className="flex flex-col gap-4 mt-7">
+      <ul className="flex flex-col gap-4 mt-6">
         {tasksList ? (
           tasksList.map((task, index) => (
             <ToDoItem

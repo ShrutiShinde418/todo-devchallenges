@@ -8,7 +8,13 @@ import CompleteTab from "./components/CompleteTab";
 function App() {
   const [tab, setTab] = useState("All");
   const tabNames = ["All", "Active", "Completed"];
-  const [tasksList, setTasksList] = useState([]);
+  const [tasksList, setTasksList] = useState([
+    { taskText: "Practice Web Development", isDone: false },
+    {
+      taskText: "Python Inheritance Course",
+      isDone: true,
+    },
+  ]);
   const changeTabHandler = (tabName) => {
     setTab(tabName);
   };
@@ -37,14 +43,14 @@ function App() {
       <ActiveTab getTaskHandler={getTaskHandler} activeTasks={tasksList} />
     );
   } else {
-    tabContent = <CompleteTab />;
+    tabContent = <CompleteTab completedTasks={tasksList} />;
   }
 
   return (
-    <div className="flex flex-col items-center my-6 min-h-screen">
+    <div className="flex flex-col items-center sm:justify-start justify-center my-6 min-h-screen">
       <h1 className="font-bold text-4xl text-gray1 font-raleway">#todo</h1>
-      <div>
-        <menu className="grid grid-cols-3 gap-28 mt-12 border-b border-gray2 px-14 text-center font-montserrat font-semibold text-gray1">
+      <div className="sm:mx-0 mx-5">
+        <menu className="grid grid-cols-3 sm:gap-28 gap-6 mt-12 border-b border-gray2 sm:px-14 text-center font-montserrat font-semibold text-gray1">
           {tabNames.map((name) => (
             <TabButton
               key={name}

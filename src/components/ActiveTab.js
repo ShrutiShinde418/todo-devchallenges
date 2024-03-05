@@ -6,17 +6,19 @@ const ActiveTab = ({ activeTasks, getTaskHandler }) => {
   return (
     <React.Fragment>
       <Form getTask={getTaskHandler} />
-      {activeTasks ? (
-        activeTasks.map((activeTask, index) => (
-          <ToDoItem
-            task={activeTask.taskText}
-            key={index}
-            isDone={activeTask.isDone}
-          />
-        ))
-      ) : (
-        <p className="mt-6">No active tasks</p>
-      )}
+      <ul className="flex flex-col gap-4 mt-6">
+        {activeTasks ? (
+          activeTasks.map((activeTask, index) => (
+            <ToDoItem
+              task={activeTask.taskText}
+              key={index}
+              isDone={activeTask.isDone}
+            />
+          ))
+        ) : (
+          <p className="mt-6">No active tasks</p>
+        )}
+      </ul>
     </React.Fragment>
   );
 };
