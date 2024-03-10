@@ -4,9 +4,10 @@ import TabButton from "./components/TabButton";
 import AllTab from "./components/AllTab";
 import ActiveTab from "./components/ActiveTab";
 import CompleteTab from "./components/CompleteTab";
+import { useSelector } from "react-redux";
 
 function App() {
-  const [tab, setTab] = useState("All");
+  const tabState = useSelector((state) => state.tabs);
   const tabNames = ["All", "Active", "Completed"];
   const [tasksList, setTasksList] = useState([
     { taskText: "Practice Web Development", isDone: false },
@@ -15,9 +16,6 @@ function App() {
       isDone: true,
     },
   ]);
-  const changeTabHandler = (tabName) => {
-    setTab(tabName);
-  };
   const getTaskHandler = (task) => {
     const tasksArray = [...tasksList, { taskText: task, isDone: false }];
     setTasksList(tasksArray);
@@ -30,15 +28,9 @@ function App() {
   };
   let tabContent;
 
-  if (tab === "All") {
-    tabContent = (
-      <AllTab
-        tasksList={tasksList}
-        getTaskHandler={getTaskHandler}
-        taskCompleteHandler={taskCompleteHandler}
-      />
-    );
-  } else if (tab === "Active") {
+  if (tabState === "All") {
+    tabContent = <AllTab />;
+  } else if (tabState === "Active") {
     tabContent = (
       <ActiveTab getTaskHandler={getTaskHandler} activeTasks={tasksList} />
     );
@@ -55,8 +47,7 @@ function App() {
             <TabButton
               key={name}
               content={name}
-              class={tab === name ? "active" : ""}
-              onClick={() => changeTabHandler(name)}
+              class={tabState === name ? "active" : ""}
             />
           ))}
         </menu>

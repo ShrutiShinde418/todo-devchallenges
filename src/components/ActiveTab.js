@@ -2,10 +2,10 @@ import React from "react";
 import Form from "./Form";
 import ToDoItem from "./ToDoItem";
 
-const ActiveTab = ({ activeTasks, getTaskHandler }) => {
+const ActiveTab = ({ activeTasks }) => {
   return (
     <React.Fragment>
-      <Form getTask={getTaskHandler} />
+      <Form />
       <ul className="flex flex-col gap-4 mt-6">
         {activeTasks ? (
           activeTasks.map((activeTask, index) => (

@@ -1,15 +1,25 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import taskSlice from "../store/taskSlice";
 
-const Form = (props) => {
+const Form = () => {
+  const dispatch = useDispatch();
+  const { addTaskHandler } = taskSlice.actions;
   const [task, setTask] = useState("");
   const textChangeHandler = (e) => {
     setTask(e.target.value);
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    props.getTask(task);
+    console.log({ isDone: false, id: getID(), taskText: task });
+    dispatch(addTaskHandler({ isDone: false, id: getID(), taskText: task }));
     setTask("");
   };
+
+  const getID = () => {
+    return Date.now().toString(36);
+  };
+
   return (
     <form
       className="flex justify-between gap-5 text-sm"

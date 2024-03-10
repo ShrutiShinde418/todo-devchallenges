@@ -1,19 +1,22 @@
 import React from "react";
 import Form from "./Form";
 import ToDoItem from "./ToDoItem";
+import { useSelector } from "react-redux";
 
-const AllTab = ({ tasksList, getTaskHandler, taskCompleteHandler }) => {
+const AllTab = () => {
+  const taskState = useSelector((state) => state.tasks.tasksList);
+  console.log(taskState);
   return (
     <React.Fragment>
-      <Form getTask={getTaskHandler} />
+      <Form />
       <ul className="flex flex-col gap-4 mt-6">
-        {tasksList ? (
-          tasksList.map((task, index) => (
+        {taskState ? (
+          taskState.map((task) => (
             <ToDoItem
               task={task.taskText}
-              key={index}
+              key={task.id}
+              id={task.id}
               isDone={task.isDone}
-              completeHandler={taskCompleteHandler}
             />
           ))
         ) : (
