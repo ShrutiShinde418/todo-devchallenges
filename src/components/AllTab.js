@@ -5,12 +5,11 @@ import { useSelector } from "react-redux";
 
 const AllTab = () => {
   const taskState = useSelector((state) => state.tasks.tasksList);
-  console.log(taskState);
   return (
     <React.Fragment>
       <Form />
       <ul className="flex flex-col gap-4 mt-6">
-        {taskState ? (
+        {taskState.length > 0 ? (
           taskState.map((task) => (
             <ToDoItem
               task={task.taskText}

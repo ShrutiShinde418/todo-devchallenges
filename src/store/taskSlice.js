@@ -3,18 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const taskSlice = createSlice({
   name: "tasks",
   initialState: {
-    tasksList: [
-      {
-        taskText: "Practice Web Development",
-        isDone: false,
-        id: "sfjansd",
-      },
-      {
-        taskText: "Python Inheritance Course",
-        isDone: true,
-        id: "dnvasklv",
-      },
-    ],
+    tasksList: [],
   },
   reducers: {
     addTaskHandler: (state, action) => {
@@ -28,9 +17,12 @@ const taskSlice = createSlice({
     },
     deleteTaskHandler: (state, action) => {
       const index = state.tasksList.findIndex(
-        (taskItem) => taskItem.taskText === action.payload
+        (taskItem) => taskItem.id === action.payload
       );
       state.tasksList.splice(index, 1);
+    },
+    clearTasksHandler: (state) => {
+      state.tasksList = state.tasksList.filter((task) => !task.isDone);
     },
   },
 });

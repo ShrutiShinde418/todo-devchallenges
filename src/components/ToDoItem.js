@@ -6,7 +6,6 @@ const ToDoItem = ({ task, isDone, id }) => {
   const { toggleTaskHandler } = taskSlice.actions;
   const dispatch = useDispatch();
   const taskDoneHandler = (e, key) => {
-    console.log({ e: e.target.checked, key: key });
     dispatch(toggleTaskHandler({ checked: e.target.checked, id: id }));
   };
   return (

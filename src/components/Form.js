@@ -11,7 +11,6 @@ const Form = () => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log({ isDone: false, id: getID(), taskText: task });
     dispatch(addTaskHandler({ isDone: false, id: getID(), taskText: task }));
     setTask("");
   };
