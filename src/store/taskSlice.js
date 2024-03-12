@@ -17,7 +17,7 @@ const taskSlice = createSlice({
     },
     deleteTaskHandler: (state, action) => {
       const index = state.tasksList.findIndex(
-        (taskItem) => taskItem.id === action.payload
+        (taskItem) => taskItem.id === action.payload.id
       );
       state.tasksList.splice(index, 1);
     },

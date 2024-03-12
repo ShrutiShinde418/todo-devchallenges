@@ -5,7 +5,7 @@ import taskSlice from "../store/taskSlice";
 const ToDoItem = ({ task, isDone, id }) => {
   const { toggleTaskHandler } = taskSlice.actions;
   const dispatch = useDispatch();
-  const taskDoneHandler = (e, key) => {
+  const taskDoneHandler = (e, id) => {
     dispatch(toggleTaskHandler({ checked: e.target.checked, id: id }));
   };
   return (

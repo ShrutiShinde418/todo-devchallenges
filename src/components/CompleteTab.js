@@ -10,7 +10,7 @@ const CompleteTab = () => {
   const dispatch = useDispatch();
   const removeTaskHandler = (e, id) => {
     e.preventDefault();
-    dispatch(deleteTaskHandler());
+    dispatch(deleteTaskHandler({ id }));
   };
   return (
     <React.Fragment>
